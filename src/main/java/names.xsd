@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="names"
+        elementFormDefault="qualified">
+    <element name="names">
+        <complexType>
+            <sequence>
+                <element name="name" maxOccurs="unbounded">
+                    <complexType>
+                        <attribute name="firstName" type="string"/>
+                        <attribute name="middleName" type="string"/>
+                        <attribute name="lastName" type="string"/>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+</schema>
