@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Names</title>
+</head>
+<a data-th-href="@{/name/create}">Create</a>
+<body>
+    <table id="namesTable">
+        <thead>
+            <tr>
+                <th></th>
+                <th>First name</th>
+                <th>Middle name</th>
+                <th>Last name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-th-each="name : ${names}">
+                <td><input type="checkbox"></td>
+                <td data-th-text="${name.firstName}"></td>
+                <td data-th-text="${name.middleName}"></td>
+                <td data-th-text="${name.lastName}"></td>
+                <td><form data-th-object="${name}"
+                          data-th-action="@{/name/delete/__${name.id}__}"
+                          method="post">
+                    <input type="submit" value="Delete">
+                </form></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
