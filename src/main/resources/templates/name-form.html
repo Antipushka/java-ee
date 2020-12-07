@@ -3,6 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Name form</title>
+    <script type="text/javascript">
+        function onFirstNameFieldBlur(firstNameField) {
+            if (firstNameField.value.length === 0) {
+                firstNameField.value = "например, Иван";
+            }
+        }
+
+        function onFirstNameFieldFocus(firstNameField) {
+            if (firstNameField.value === "например, Иванов") {
+                firstNameField.value = "";
+            }
+        }
+
+        function onMiddleNameFieldBlur(middleNameField) {
+            if (middleNameField.value.length === 0) {
+                middleNameField.value = "например, Иванович";
+            }
+        }
+
+        function onMiddleNameFieldFocus(middleNameField) {
+            if (middleNameField.value === "например, Иванович") {
+                middleNameField.value = "";
+            }
+        }
+
+        function onLastNameFieldBlur(lastNameField) {
+            if (lastNameField.value.length === 0) {
+                lastNameField.value = "например, Иванов";
+            }
+        }
+
+        function onLastNameFieldFocus(lastNameField) {
+            if (lastNameField.value === "наприме, Иванов") {
+                lastNameField.value = "";
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="nameForm"
@@ -14,23 +51,31 @@
                 <td><label>First name:</label></td>
                 <td><input id="firstName"
                            type="text"
-                           data-th-field="*{firstName}"></td>
+                           data-th-field="*{firstName}"
+                           onblur="onFirstNameFieldBlur(this)"
+                           onfocus="onFirstNameFieldFocus(this)"></td>
             </tr>
             <tr>
                 <td><label>Middle name:</label></td>
                 <td><input id="middleName"
                            type="text"
-                           data-th-field="*{middleName}"></td>
+                           data-th-field="*{middleName}"
+                           onblur="onMiddleNameFieldBlur(this)"
+                           onfocus="onMiddleNameFieldFocus(this)"></td>
             </tr>
             <tr>
                 <td><label>Last name:</label></td>
                 <td><input id="lastName"
                            type="text"
-                           data-th-field="*{lastName}"></td>
+                           data-th-field="*{lastName}"
+                           onblur="onLastNameFieldBlur(this)"
+                           onfocus="onLastNameFieldFocus(this)"></td>
+            </tr>
+            <tr><td><input id="createButton" type="submit" value="Create">
+                <td><a id="cancelButton" data-th-href="@{/name/all}">Cancel</a>
             </tr>
         </table>
-        <input type="submit" value="Create">
     </form>
-    <a data-th-href="@{/name/all}">Cancel</a>
+
 </body>
 </html>

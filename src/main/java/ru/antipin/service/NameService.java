@@ -1,31 +1,16 @@
 package ru.antipin.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import ru.antipin.entity.Name;
-import ru.antipin.repository.NameRepository;
 
 import java.util.List;
 
-@Service
-public class NameService {
+public interface NameService {
 
-    @Autowired
-    private NameRepository nameRepository;
+    List<Name> findAll();
 
-    public List<Name> findAll() {
-        return nameRepository.findAll();
-    }
+    void save(Name name);
 
-    public void save(Name name) {
-        nameRepository.save(name);
-    }
+    void delete(Name name);
 
-    public void delete(Name name) {
-        nameRepository.delete(name);
-    }
-
-    public void deleteById(Long id) {
-        nameRepository.deleteById(id);
-    }
+    void deleteById(Long id);
 }
